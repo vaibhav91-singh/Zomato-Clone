@@ -2,7 +2,8 @@
  * Centralized Resilient API Service Layer
  */
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const BASE_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.MODE === 'production' ? 'https://zomato-clone-rorf.onrender.com' : 'http://localhost:5000');
 const DEFAULT_TIMEOUT_MS = 10000;
 
 class ApiClient {
