@@ -93,12 +93,16 @@ export default function CartDrawer({
 
     setCheckingOut(true);
 
+    const targetRestaurantId = cartItems.find(i => i.restaurantId)?.restaurantId || '1';
+
     const orderPayload = {
+      restaurantId: targetRestaurantId,
       items: cartItems.map(item => ({
         id: item.id,
         name: item.name,
         price: item.price,
-        quantity: item.quantity
+        quantity: item.quantity,
+        restaurantId: item.restaurantId || targetRestaurantId
       })),
       subtotal,
       discount: discountAmount,

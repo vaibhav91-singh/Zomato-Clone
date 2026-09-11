@@ -47,7 +47,12 @@ const validateLogin = (req, res, next) => {
  * Validate Order Creation Payload
  */
 const validateOrder = (req, res, next) => {
-  const { restaurantId, items, deliveryAddress, paymentMethod } = req.body || {};
+  let { restaurantId, items, deliveryAddress, paymentMethod } = req.body || {};
+
+  if (!restaurantId && Array.isArray(items) && items.length > 0) {
+    restaurantId = items[0]?.restaurantId || '1';
+    req.body.restaurantId = restaurantId;
+  }
 
   if (!restaurantId) {
     return next(new AppError('Restaurant ID is required.', 400));
