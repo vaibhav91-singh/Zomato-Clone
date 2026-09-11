@@ -1,0 +1,433 @@
+/* ==========================================================================
+   ORDER TRACKER MODAL & LIVE GPS MAP STYLES
+   ========================================================================== */
+.tracker-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 10, 17, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+.tracker-modal-card {
+  position: relative;
+  background: var(--bg-dark-800, #131A26);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(226, 55, 68, 0.15);
+  padding: 24px 24px 28px 24px;
+  text-align: left;
+}
+
+.tracker-modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+.tracker-modal-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+/* Header Live Badge */
+.tracker-modal-header {
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.tracker-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10B981;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 30px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.pulse-green-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.tracker-close-x-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9CA3AF;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tracker-close-x-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Confetti background animation */
+.celebration-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0.8;
+  animation: confettiDrop 3s linear infinite;
+}
+
+@keyframes confettiDrop {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(500px) rotate(720deg); opacity: 0; }
+}
+
+/* GPS MAP CANVAS SIMULATION */
+.gps-map-container {
+  position: relative;
+  background: linear-gradient(180deg, #0B111A 0%, #151D2A 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px 12px 10px 12px;
+  margin-bottom: 18px;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.gps-route-svg {
+  width: 100%;
+  height: 90px;
+  overflow: visible;
+}
+
+.animated-dash-line {
+  stroke-dasharray: 8 8;
+  animation: dashMove 1.2s linear infinite;
+}
+
+@keyframes dashMove {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+/* Rider Marker */
+.gps-rider-marker {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.rider-beacon-aura {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.35);
+  animation: beaconPulse 1.8s ease-out infinite;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.rider-icon-circle {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #10B981, #059669);
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gps-labels-row {
+  margin-top: 4px;
+  padding: 0 16px;
+}
+
+.gps-label-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9CA3AF;
+  letter-spacing: 0.4px;
+}
+
+/* Countdown Timer Box */
+.tracker-countdown-box {
+  background: linear-gradient(135deg, rgba(226, 55, 68, 0.12), rgba(255, 159, 13, 0.08));
+  border: 1px solid rgba(226, 55, 68, 0.25);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.countdown-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #F3F4F6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.countdown-timer {
+  font-size: 32px;
+  font-weight: 900;
+  color: #FFC043;
+  font-family: monospace, system-ui, sans-serif;
+  letter-spacing: 2px;
+  margin: 4px 0;
+  text-shadow: 0 0 16px rgba(255, 192, 67, 0.4);
+}
+
+.countdown-sub {
+  font-size: 12px;
+  color: #9CA3AF;
+}
+
+/* Driver Profile Card */
+.driver-profile-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+
+.driver-avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-red, #E23744);
+}
+
+.driver-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.driver-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.driver-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.driver-rating-badge {
+  background: rgba(255, 192, 67, 0.15);
+  color: #FFC043;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.driver-vehicle {
+  font-size: 12px;
+  color: #9CA3AF;
+}
+
+.driver-hygiene-tag {
+  font-size: 10px;
+  color: #10B981;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.driver-call-btn {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10B981;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.driver-call-btn:hover {
+  background: #10B981;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+/* Tipping Selector Section */
+.tipping-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 18px;
+}
+
+.tipping-header {
+  margin-bottom: 10px;
+}
+
+.tipping-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tipping-sub {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+.tipping-pills-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tip-pill-btn {
+  position: relative;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.tip-pill-btn:hover {
+  border-color: #FFC043;
+  background: rgba(255, 192, 67, 0.1);
+}
+
+.tip-pill-btn.selected {
+  background: linear-gradient(135deg, #FFC043, #F59E0B);
+  color: #000000;
+  border-color: #FFC043;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+  transform: translateY(-2px);
+}
+
+.popular-badge {
+  font-size: 9px;
+  font-weight: 800;
+  background: #E23744;
+  color: #FFFFFF;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.tip-success-toast {
+  margin-top: 10px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10B981;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Address & Footer */
+.tracker-address-box {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.address-label {
+  color: #9CA3AF;
+  margin-bottom: 2px;
+}
+
+.address-value {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.tracker-close-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #E23744, #C62431);
+  border: none;
+  color: #FFFFFF;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(226, 55, 68, 0.4);
+}
+
+.tracker-close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(226, 55, 68, 0.6);
+}
+
+

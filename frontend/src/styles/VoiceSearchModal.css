@@ -1,0 +1,245 @@
+/* ==========================================================================
+   HANDS-FREE VOICE AI CRAVING SEARCH STYLES
+   ========================================================================== */
+
+.voice-modal-card {
+  position: relative;
+  background: linear-gradient(145deg, #131A26 0%, #0B111D 100%);
+  border: 2px solid rgba(255, 192, 67, 0.4);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 192, 67, 0.2);
+  padding: 28px 24px;
+  text-align: center;
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+}
+
+.voice-modal-header {
+  margin-bottom: 20px;
+}
+
+.voice-badge-pill {
+  display: inline-flex;
+  background: rgba(255, 192, 67, 0.15);
+  border: 1px solid rgba(255, 192, 67, 0.3);
+  color: #FFC043;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.8px;
+}
+
+.voice-modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 8px 0 4px 0;
+}
+
+.voice-modal-sub {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+/* Mic Button & Siri/Gemini Aura Visualizer */
+.voice-visualizer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.voice-aura-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-mic-main-btn {
+  position: relative;
+  z-index: 2;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  border: 2px solid rgba(255, 192, 67, 0.4);
+  color: #FFC043;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 192, 67, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.voice-mic-main-btn:hover {
+  transform: scale(1.08);
+  border-color: #FFC043;
+  color: #FFFFFF;
+  box-shadow: 0 12px 36px rgba(255, 192, 67, 0.4);
+}
+
+.voice-mic-main-btn.listening {
+  background: linear-gradient(135deg, #E23744 0%, #C62431 100%);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  box-shadow: 0 0 40px rgba(226, 55, 68, 0.8);
+}
+
+.mic-svg-icon {
+  transition: transform 0.2s ease;
+}
+
+.voice-mic-main-btn:hover .mic-svg-icon {
+  transform: scale(1.1);
+}
+
+/* Multi-layer Siri/Gemini Aura Rings */
+.siri-aura-ring {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.siri-aura-ring.ring1 {
+  inset: -8px;
+  border: 2px solid rgba(226, 55, 68, 0.7);
+  animation: siriGlowWave 1.8s infinite ease-out;
+}
+
+.siri-aura-ring.ring2 {
+  inset: -18px;
+  border: 2px solid rgba(255, 192, 67, 0.6);
+  animation: siriGlowWave 1.8s infinite ease-out 0.4s;
+}
+
+.siri-aura-ring.ring3 {
+  inset: -28px;
+  border: 2px solid rgba(226, 55, 68, 0.4);
+  animation: siriGlowWave 1.8s infinite ease-out 0.8s;
+}
+
+@keyframes siriGlowWave {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* Equalizer Bars Animation */
+.equalizer-waves {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  margin-top: 14px;
+}
+
+.eq-bar {
+  width: 5px;
+  background: linear-gradient(180deg, #FFC043, #E23744);
+  border-radius: 3px;
+  animation: eqPulse 0.8s infinite ease-in-out alternate;
+}
+
+.bar1 { height: 12px; animation-delay: 0.1s; }
+.bar2 { height: 24px; animation-delay: 0.3s; }
+.bar3 { height: 30px; animation-delay: 0.2s; }
+.bar4 { height: 20px; animation-delay: 0.4s; }
+.bar5 { height: 14px; animation-delay: 0.15s; }
+
+@keyframes eqPulse {
+  0% { height: 6px; }
+  100% { height: 30px; }
+}
+
+/* Transcript Box */
+.voice-transcript-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.transcript-label {
+  font-size: 11px;
+  color: #9CA3AF;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.transcript-text {
+  font-size: 15px;
+  color: #FFC043;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Sample Voice Chips */
+.voice-samples-section {
+  text-align: left;
+}
+
+.voice-samples-title {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.voice-sample-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sample-chip-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #E5E7EB;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sample-chip-btn:hover {
+  background: rgba(226, 55, 68, 0.15);
+  border-color: #E23744;
+  color: #E23744;
+}
+
+/* Voice Search Button inside Search Wrapper */
+.header-voice-btn {
+  background: rgba(226, 55, 68, 0.15);
+  border: 1px solid rgba(226, 55, 68, 0.4);
+  color: #E23744;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 4px;
+}
+
+.header-voice-btn:hover {
+  background: linear-gradient(135deg, #E23744, #C62431);
+  color: #FFFFFF;
+  border-color: #E23744;
+  box-shadow: 0 0 14px rgba(226, 55, 68, 0.6);
+  transform: scale(1.1);
+}

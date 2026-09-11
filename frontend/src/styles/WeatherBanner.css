@@ -1,0 +1,211 @@
+/* ==========================================================================
+   WEATHER SPECIAL AD BANNER STYLES
+   ========================================================================== */
+.weather-banner-wrapper {
+  margin-bottom: 36px;
+}
+
+.weather-mood-tabs {
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.weather-mood-btn {
+  background: var(--bg-dark-800);
+  border: 1px solid var(--glass-border);
+  color: var(--text-gray-300);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.weather-mood-btn:hover {
+  background: var(--bg-dark-700);
+  color: #FFFFFF;
+}
+
+.weather-mood-btn.active {
+  background: linear-gradient(135deg, #FF6B00, #E23744);
+  border-color: #FF6B00;
+  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.35);
+}
+
+.weather-banner-card {
+  position: relative;
+  background: linear-gradient(135deg, #1E1B4B, #0F172A);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 30px 36px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.weather-banner-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+}
+
+.weather-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #FF8080;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.live-pulsing-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #EF4444;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #EF4444;
+  animation: pulseGlow 1.2s infinite;
+}
+
+.weather-headline {
+  font-size: 26px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.weather-desc {
+  font-size: 14px;
+  color: #CBD5E1;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.weather-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.weather-cta-btn {
+  background: linear-gradient(135deg, #E23744, #FF9F0D);
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(226, 55, 68, 0.4);
+  transition: all 0.2s ease;
+}
+
+.weather-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(226, 55, 68, 0.6);
+}
+
+.weather-tag-pill {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFD700;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.weather-banner-graphic {
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .weather-banner-graphic {
+    display: block;
+  }
+}
+
+.graphic-circle {
+  width: 110px;
+  height: 110px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.emoji-hero {
+  font-size: 54px;
+}
+
+/* ==========================================================================
+   DAY MODE (LIGHT THEME) WEATHER BANNER OVERRIDES
+   ========================================================================== */
+[data-theme="light"] .weather-mood-btn {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(226, 55, 68, 0.2);
+  color: #374151;
+}
+
+[data-theme="light"] .weather-mood-btn:hover {
+  background: #FFF0F1;
+  color: #E23744;
+  border-color: #E23744;
+}
+
+[data-theme="light"] .weather-banner-card {
+  background: linear-gradient(135deg, #E23744 0%, #B71C1C 100%);
+  border: none;
+  box-shadow: 0 16px 40px rgba(226, 55, 68, 0.25);
+}
+
+[data-theme="light"] .weather-badge {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+}
+
+[data-theme="light"] .live-pulsing-dot {
+  background-color: #FFD700;
+  box-shadow: 0 0 8px #FFD700;
+}
+
+[data-theme="light"] .weather-headline {
+  color: #FFFFFF;
+}
+
+[data-theme="light"] .weather-desc {
+  color: #FEE2E2;
+}
+
+[data-theme="light"] .weather-tag-pill {
+  background: #FFFFFF;
+  border: none;
+  color: #E23744;
+}
+

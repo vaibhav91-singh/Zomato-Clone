@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ORD_1789078613005_333",
+    "orderId": "ZOM_741827",
+    "createdAt": "2026-09-10T22:16:53.005Z",
+    "status": "Confirmed",
+    "restaurantId": "17",
+    "items": [
+      {
+        "name": "Butter Naan",
+        "price": 60,
+        "quantity": 2
+      }
+    ],
+    "subtotal": 0,
+    "discount": 0,
+    "deliveryFee": 0,
+    "tax": 0,
+    "total": 0,
+    "address": "Cyber City Phase 2, Gurugram",
+    "paymentMethod": "UPI",
+    "estimatedDeliveryTime": 30
+  }
+]

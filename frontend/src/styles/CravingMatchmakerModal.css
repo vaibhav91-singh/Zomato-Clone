@@ -1,0 +1,382 @@
+/* ==========================================================================
+   AI CRAVING MATCHMAKER MODAL & SPINNING WHEEL STYLES
+   ========================================================================== */
+
+.matchmaker-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 10, 17, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+.matchmaker-modal-card {
+  position: relative;
+  background: linear-gradient(145deg, #131A26 0%, #0B111D 100%);
+  border: 2px solid rgba(226, 55, 68, 0.3);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(226, 55, 68, 0.15);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.matchmaker-modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+.matchmaker-modal-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.matchmaker-close-x {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #9CA3AF;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.matchmaker-close-x:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+}
+
+.matchmaker-header {
+  margin-bottom: 18px;
+}
+
+.matchmaker-badge-pill {
+  display: inline-flex;
+  background: rgba(226, 55, 68, 0.15);
+  border: 1px solid rgba(226, 55, 68, 0.3);
+  color: #E23744;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.matchmaker-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.matchmaker-sub {
+  font-size: 12px;
+  color: #9CA3AF;
+}
+
+/* Tabs */
+.matchmaker-tabs-row {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  gap: 6px;
+}
+
+.matchmaker-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #9CA3AF;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.matchmaker-tab-btn.active {
+  background: #E23744;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(226, 55, 68, 0.4);
+}
+
+/* Spinning Wheel Section */
+.wheel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wheel-wrapper {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin-bottom: 20px;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  color: #FFC043;
+  z-index: 10;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8));
+}
+
+.wheel-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #1E293B;
+  box-shadow: 0 0 30px rgba(226, 55, 68, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.8);
+  transition: transform 3.2s cubic-bezier(0.15, 0.9, 0.25, 1);
+  overflow: hidden;
+  background: conic-gradient(
+    #E23744 0deg 60deg,
+    #F59E0B 60deg 120deg,
+    #10B981 120deg 180deg,
+    #3B82F6 180deg 240deg,
+    #EC4899 240deg 300deg,
+    #8B5CF6 300deg 360deg
+  );
+}
+
+.wheel-slice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 18px;
+  transform-origin: 50% 50%;
+}
+
+.slice-text {
+  font-size: 13px;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+}
+
+.spin-action-btn {
+  background: linear-gradient(135deg, #FFC043 0%, #F59E0B 100%);
+  border: none;
+  color: #000000;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 12px 32px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.spin-action-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.6);
+}
+
+.spin-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Quiz Section */
+.quiz-section {
+  text-align: left;
+}
+
+.quiz-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.quiz-option-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #D1D5DB;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.quiz-option-chip:hover {
+  border-color: #E23744;
+  background: rgba(226, 55, 68, 0.1);
+}
+
+.quiz-option-chip.selected {
+  background: linear-gradient(135deg, #E23744, #C62431);
+  color: #FFFFFF;
+  border-color: #E23744;
+  box-shadow: 0 4px 14px rgba(226, 55, 68, 0.4);
+}
+
+/* Matched Result Card */
+.matched-result-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 192, 67, 0.3);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: left;
+}
+
+.result-badge-row {
+  margin-bottom: 6px;
+}
+
+.result-badge {
+  background: rgba(255, 192, 67, 0.15);
+  color: #FFC043;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.result-savings {
+  color: #10B981;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.result-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.result-desc {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-bottom: 12px;
+}
+
+.combo-items-list {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.combo-item-row {
+  font-size: 12px;
+  color: #E5E7EB;
+  display: flex;
+  align-items: center;
+}
+
+.combo-item-price {
+  font-weight: 700;
+  color: #9CA3AF;
+}
+
+.combo-pricing-bar {
+  gap: 12px;
+}
+
+.total-label {
+  font-size: 10px;
+  color: #9CA3AF;
+  text-transform: uppercase;
+}
+
+.total-amount {
+  font-size: 20px;
+  font-weight: 900;
+  color: #FFC043;
+}
+
+.original-strike {
+  font-size: 13px;
+  color: #6B7280;
+  text-decoration: line-through;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.add-combo-btn {
+  background: linear-gradient(135deg, #10B981, #059669);
+  border: none;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  white-space: nowrap;
+}
+
+.add-combo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+}
+
+/* Floating AI CTA Button in Bottom Left (Compact Small Size) */
+.floating-matchmaker-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #E23744 0%, #FF9F0D 100%);
+  border: 1.5px solid #FFFFFF;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 24px;
+  cursor: pointer;
+  z-index: 990;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 6px 20px rgba(226, 55, 68, 0.5);
+  transition: all 0.25s ease;
+}
+
+.floating-matchmaker-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 25px rgba(226, 55, 68, 0.7);
+}
